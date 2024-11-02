@@ -17,11 +17,11 @@ namespace Lab2_ElectricBill
         // Our account number to be incremented
         private int accountNo;
         //Instatntiates the string and Gets and sets for our first name 
-        private string FirstName { get; set; }
+        private string firstname; 
         //Instatntiates the string and Gets and sets for our last name 
-        private string LastName { get; set; }
+        private string lastname;
         //Instatntiates the string and Gets and sets for our kwh 
-        private decimal KwhUsed { get; set; }
+        private decimal kwhUsed; 
         // Initiates the full tally of the bill totals
         private  decimal billAmount ;
         // Public static to be incremented starting at 100
@@ -39,6 +39,35 @@ namespace Lab2_ElectricBill
         
 
         // Getters and setters 
+        // Making these read only for testing purposes 
+        public string FirstName
+        {
+            get 
+            {
+                return firstname;
+            }
+            // removed set to make the account number read only
+
+        }
+        public string LastName
+        {
+            get
+            {
+                return lastname;
+            }
+            // removed set to make the account number read only
+
+        }
+        public decimal KwhUsed
+        {
+            get
+            {
+                return kwhUsed;
+            }
+            // removed set to make the account number read only
+
+        }
+
         public int AccountNo
         {   
             // Get for acctNo
@@ -77,16 +106,16 @@ namespace Lab2_ElectricBill
         }
 
         // Constructor for customers! Takes in first, last name and the used KWh
-        public CustomerData(string fName, string lName, decimal kwhUsed)
+        public CustomerData(string fName, string lName, decimal kwh)
         {   
             // sets account number to the next acct and increments 1
             accountNo = nextAcct++;
-            // sets the first name 
-            FirstName = fName;
-            // Sets the last name 
-            LastName = lName;
+            // sets the first name and trim extra space
+            firstname = fName.Trim();
+            // Sets the last name and trims spaces 
+            lastname = lName.Trim();
             // sets the kwh used 
-            KwhUsed = kwhUsed;
+            kwhUsed = kwh;
             // calculates and store the bill ammt with admin fee 
             billAmount = (kwhUsed * KWHRate)+adminFee;
             // adds to the kwh total 
@@ -101,11 +130,11 @@ namespace Lab2_ElectricBill
         // overrides our tostring to display
         public override string ToString() 
         {
-            return $"Acct: {accountNo} \n" +
-                $" {FirstName} \n" +
-                $" {LastName} ," +
-                $"KW : {KwhUsed} \n" +
-                $"Bill : {billAmount} \n";
+            return $"Acct : {accountNo}, " +
+                $" Name : {firstname} " +
+                $" {lastname} ," +
+                $" KW : {kwhUsed}," +
+                $" Bill : {billAmount.ToString("c")}";
               
         }
     }

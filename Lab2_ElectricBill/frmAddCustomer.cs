@@ -101,7 +101,9 @@ namespace Lab2_ElectricBill
             {   
                 // sets success to false and pops up msg box 
                 success = false;
+
                 MessageBox.Show(errorMessage, "Entry Error");
+                
             }
             // returns our final success result 
             return success;
