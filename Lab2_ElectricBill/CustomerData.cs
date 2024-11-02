@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Chris Ferguson - Rapid application development - Lab 2 - Nov 2024
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Diagnostics;
@@ -87,14 +89,16 @@ namespace Lab2_ElectricBill
             KwhUsed = kwhUsed;
             // calculates and store the bill ammt with admin fee 
             billAmount = (kwhUsed * KWHRate)+adminFee;
-            // 
+            // adds to the kwh total 
             totalKW += kwhUsed;
+            // Increased the total customer list 
             totalCustomers++;
+            // adds the bill to the bill total for averagin in the form 
             billTotal += billAmount;
 
         }
 
-
+        // overrides our tostring to display
         public override string ToString() 
         {
             return $"Acct: {accountNo} \n" +

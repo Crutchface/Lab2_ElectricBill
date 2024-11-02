@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2_ElectricBill", "Lab2_ElectricBill\Lab2_ElectricBill.csproj", "{BB2B094B-513D-4396-98A9-C056A41A015D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2_ElectricBill", "Lab2_ElectricBill\Lab2_ElectricBill.csproj", "{BB2B094B-513D-4396-98A9-C056A41A015D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElecTest", "ElecTest\ElecTest.csproj", "{FA138C88-467B-485E-8672-B1BB9B01AB27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BB2B094B-513D-4396-98A9-C056A41A015D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB2B094B-513D-4396-98A9-C056A41A015D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB2B094B-513D-4396-98A9-C056A41A015D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA138C88-467B-485E-8672-B1BB9B01AB27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA138C88-467B-485E-8672-B1BB9B01AB27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA138C88-467B-485E-8672-B1BB9B01AB27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA138C88-467B-485E-8672-B1BB9B01AB27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

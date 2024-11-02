@@ -139,7 +139,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(432, 497);
+            ClientSize = new Size(424, 497);
             Controls.Add(grpDetails);
             Controls.Add(btnAddCust);
             Controls.Add(lblListBoxCust);
