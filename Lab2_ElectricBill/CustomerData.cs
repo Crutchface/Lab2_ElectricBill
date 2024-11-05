@@ -104,9 +104,17 @@ namespace Lab2_ElectricBill
             }
             // removed set to make the account number read only
         }
+        public decimal BillAmount
+        {
+            get
+            {
+                return billAmount;
+            }
+            // removed set to make the account number read only
+        }
 
         // Constructor for customers! Takes in first, last name and the used KWh
-        public CustomerData(string fName, string lName, decimal kwh)
+        public CustomerData(string fName, string lName, decimal kwh, decimal bill)
         {   
             // sets account number to the next acct and increments 1
             accountNo = nextAcct++;
@@ -117,7 +125,7 @@ namespace Lab2_ElectricBill
             // sets the kwh used 
             kwhUsed = kwh;
             // calculates and store the bill ammt with admin fee 
-            billAmount = (kwhUsed * KWHRate)+adminFee;
+            billAmount = bill;
             // adds to the kwh total 
             totalKW += kwhUsed;
             // Increased the total customer list 
@@ -131,10 +139,10 @@ namespace Lab2_ElectricBill
         public override string ToString() 
         {
             return $"Acct : {accountNo}, " +
-                $" Name : {firstname} " +
-                $" {lastname} ," +
-                $" KW : {kwhUsed}," +
-                $" Bill : {billAmount.ToString("c")}";
+                $" Name : {firstname.ToUpper()} " +
+                $" {lastname.ToUpper()} ";
+                //$" KW : {kwhUsed}";
+                //$" Bill : {billAmount.ToString("c")}";
               
         }
     }
