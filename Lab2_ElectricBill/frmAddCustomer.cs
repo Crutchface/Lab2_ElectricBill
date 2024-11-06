@@ -17,7 +17,7 @@ using System.Xml.Linq;
 namespace Lab2_ElectricBill
 {   // Creates the form 
     public partial class frmAddCustomer : Form
-    {
+    {   
         //Creates a new form from main form 
         public frmAddCustomer()
         {

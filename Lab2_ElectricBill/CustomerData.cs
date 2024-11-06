@@ -26,17 +26,8 @@ namespace Lab2_ElectricBill
         private  decimal billAmount ;
         // Public static to be incremented starting at 100
         public static int nextAcct = 100;
-        // states the rate of kwh
-        private decimal KWHRate = .07m;
-        // static decimal to be constantly iterated within the class
-        private static decimal totalKW = 0;
-        // starts our tally for customers served 
-        private static int totalCustomers;
-        // starts the customers bill total to be stored in object 
-        private static decimal billTotal = 0;
-        // states our admin fee to be charged on every bill
-        private decimal adminFee = 12; 
-        
+
+
 
         // Getters and setters 
         // Making these read only for testing purposes 
@@ -77,33 +68,7 @@ namespace Lab2_ElectricBill
             }
             // removed set to make the account number read only
         }
-        public decimal TotalKW
-        {   // get for total kw 
-            get
-            {
-                return totalKW;
-            }
-            // removed set to make the account number read only
-
-        }
-        // Total customer listing
-        public int TotalCustomers
-        {
-            get
-            {
-                return totalCustomers;
-            }
-            // removed set to make the account number read only
-        }
-        // Can display bill total 
-        public decimal BillTotal
-        {
-            get
-            {
-                return billTotal;
-            }
-            // removed set to make the account number read only
-        }
+      
         public decimal BillAmount
         {
             get
@@ -126,13 +91,14 @@ namespace Lab2_ElectricBill
             kwhUsed = kwh;
             // calculates and store the bill ammt with admin fee 
             billAmount = bill;
-            // adds to the kwh total 
-            totalKW += kwhUsed;
-            // Increased the total customer list 
-            totalCustomers++;
-            // adds the bill to the bill total for averagin in the form 
-            billTotal += billAmount;
+         
 
+        }
+        public static decimal CalculateTotal(decimal kw, decimal TAX_RATE, decimal ADMIN_FEE)
+        {   // Calculates with stated values for appropriate rates and fees
+            decimal total = (kw * TAX_RATE) + ADMIN_FEE;
+            //returns the total as a decimal
+            return total;
         }
 
         // overrides our tostring to display
@@ -141,8 +107,7 @@ namespace Lab2_ElectricBill
             return $"Acct : {accountNo}, " +
                 $" Name : {firstname.ToUpper()} " +
                 $" {lastname.ToUpper()} ";
-                //$" KW : {kwhUsed}";
-                //$" Bill : {billAmount.ToString("c")}";
+               
               
         }
     }

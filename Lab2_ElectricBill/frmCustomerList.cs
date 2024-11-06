@@ -5,27 +5,25 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Lab2_ElectricBill
 {
+
     public partial class frmCustomerList : Form
     {   // Starts our list
         List<CustomerData> customers = new List<CustomerData>();
+        private decimal totalKW;
+        // starts our tally for customers served 
+        private int totalCustomers;
+        // starts the customers bill total to be stored in object 
+        private decimal billTotal ;
+        // Stating our tax rate and admin fee to add to each bill
+        public static decimal TAX_RATE = .07m;
+        public static decimal ADMIN_FEE = 12;
+
         public frmCustomerList()
         {
             InitializeComponent();
         }
-        public decimal TAX_RATE = .07m;
-        public decimal ADMIN_FEE = 12;
-
-
         private void frmCustomerList_Load(object sender, EventArgs e)
-        {   // TESTING THE FORM
-            //CustomerData test1 = new CustomerData("Steve", "Smith", 15);
-            //CustomerData test2 = new CustomerData("Greg", "Plebb", 250);
-            //customers.Add(test1);
-            //customers.Add(test2);
-            //foreach (CustomerData c in customers)
-            //{
-            //    lstCustomers.Items.Add(c);
-            //}
+        {   
 
         }
         // opens our second form frmaddcustomer when the add customer button is pressed 
@@ -38,7 +36,14 @@ namespace Lab2_ElectricBill
             // if the result of the frmaddcustomer comes back as OK 
             if (selectedButton == DialogResult.OK)
             {
-                decimal bill = CalculateTotal(frmAddCustomer.kw);
+                // calculating the bill using kw, tax rate, and admin fee
+                decimal bill = CustomerData.CalculateTotal(frmAddCustomer.kw, TAX_RATE, ADMIN_FEE);
+                // adds the bill to the bill total
+                billTotal += bill;
+                // Adds to the kw total
+                totalKW += frmAddCustomer.kw;
+                // Increments the customer total counter
+                totalCustomers++;
                 // creates a new customer using the constructor. Info is taken from stored strings on new cust form 
                 CustomerData newcust = new CustomerData(frmAddCustomer.firstname, frmAddCustomer.lastname, frmAddCustomer.kw, bill);
                 // adds the new customer to the customer list 
@@ -52,25 +57,13 @@ namespace Lab2_ElectricBill
                     lstCustomers.Items.Add(c);
                 }
                 // sets the textbox for the number of customers processed to the cust total 
-                txtCustProcess.Text = newcust.TotalCustomers.ToString();
+                txtCustProcess.Text = totalCustomers.ToString();
                 // adds the total kw to the text box 
-                txtKwh.Text = newcust.TotalKW.ToString();
+                txtKwh.Text = totalKW.ToString();
                 // calculates and places the avg bill vlue into the avg textbox  
-                txtBillAvg.Text = (newcust.BillTotal / newcust.TotalCustomers).ToString("c");
-
+                txtBillAvg.Text = (billTotal /totalCustomers).ToString("c");
 
             }
-
-
-
-
-
-        }
-
-        public decimal CalculateTotal(decimal kw)
-        {
-            decimal total = (kw * TAX_RATE) + ADMIN_FEE;
-            return total;
         }
 
         private void btnShowDetails_Click(object sender, EventArgs e)
@@ -92,7 +85,5 @@ namespace Lab2_ElectricBill
 
             }
         }
-
-       
     }
 }

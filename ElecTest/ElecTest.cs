@@ -48,7 +48,23 @@ namespace ElecTest
             Assert.AreEqual(50, customer.KwhUsed);
             Assert.IsTrue(customer.AccountNo > 0);
         }
-      
-    
+        // Testing the calculation of the total
+        [TestMethod]
+        public void TestCalculateTotal()
+        {
+            //Arrange
+            decimal TAX_RATE = .07m;
+            decimal ADMIN_FEE = 12; 
+            decimal kw = 250;  // Kilowatt usage
+            decimal expectedTotal = (kw * TAX_RATE) + ADMIN_FEE;  // Expected result
+
+            // Act
+            decimal result = CustomerData.CalculateTotal(kw, TAX_RATE, ADMIN_FEE);
+
+            // Assert
+            Assert.AreEqual(expectedTotal, result, "The calculated total is incorrect.");
+        }
+
+
     }
 }
