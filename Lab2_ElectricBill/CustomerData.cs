@@ -96,6 +96,10 @@ namespace Lab2_ElectricBill
         }
         public static decimal CalculateTotal(decimal kw, decimal TAX_RATE, decimal ADMIN_FEE)
         {   // Calculates with stated values for appropriate rates and fees
+            if (kw < 0)
+            {
+                kw = 0;
+            }
             decimal total = (kw * TAX_RATE) + ADMIN_FEE;
             //returns the total as a decimal
             return total;

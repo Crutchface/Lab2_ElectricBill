@@ -64,6 +64,36 @@ namespace ElecTest
             // Assert
             Assert.AreEqual(expectedTotal, result, "The calculated total is incorrect.");
         }
+        [TestMethod]
+        public void CalculateZero()
+        {
+            // Arrange
+            decimal TAX_RATE = .07m;
+            decimal ADMIN_FEE = 12;
+            decimal kw = 0;  // Zero kilowatt usage
+            decimal expectedTotal = ADMIN_FEE;  // The total should just be the admin fee
+
+            // Act
+            decimal result = CustomerData.CalculateTotal(kw, TAX_RATE, ADMIN_FEE);
+
+            // Assert
+            Assert.AreEqual(expectedTotal, result, "The calculated total is incorrect for zero .");
+        }
+        [TestMethod]
+        public void CalculateNegative()
+        {
+            // Arrange
+            decimal TAX_RATE = .07m;
+            decimal ADMIN_FEE = 12;
+            decimal kw = -100;  // Negative kilowatt usage
+            decimal expectedTotal = ADMIN_FEE;  // Since kilowatt usage is negative, expect the total to be just the admin fee
+
+            // Act
+            decimal result = CustomerData.CalculateTotal(kw, TAX_RATE, ADMIN_FEE);
+
+            // Assert
+            Assert.AreEqual(expectedTotal, result, "The calculated total is incorrect for negative .");
+        }
 
 
     }
